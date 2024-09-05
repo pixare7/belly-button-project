@@ -8,7 +8,7 @@ function buildMetadata(sample) {
     // Filter the metadata for the object with the desired sample number
     let results = metadata.filter(object => object.id==sample);
     let newresult = results[0];
-    console.log(results);
+    console.log(newresult);
 
     // Use d3 to select the panel with id of `#sample-metadata`
     let panel = d3.select("#sample-metadata");
@@ -18,8 +18,8 @@ function buildMetadata(sample) {
 
     // Inside a loop, you will need to use d3 to append new
     // tags for each key-value in the filtered metadata.
-    for (let i = 0; i < newresult.length; i++) {
-      panel.append(newresult[i]);
+    for (key in newresult) {
+      panel.append('h6').text(`${key.toUpperCase()}:${newresult[key]}`);
 
     }
   });
@@ -42,8 +42,6 @@ function buildCharts(sample) {
     let otu_labels = newresult.otu_labels;
     let sample_values = newresult.sample_values;
 
-
-
     // Build a Bubble Chart
     let bubbleTrace = {
       x: otu_ids,
@@ -52,7 +50,8 @@ function buildCharts(sample) {
       mode: 'markers',
       marker: {
         color: otu_ids,
-        size: sample_values
+        size: sample_values,
+        colorscale: 'Earth'
       }
     };
     
@@ -64,13 +63,11 @@ function buildCharts(sample) {
       yaxis: { title: 'Number of Bacteria' },
       showlegend: false,
       height: 600,
-      width: 600
+      width: 1300
     };    
 
     // Render the Bubble Chart
-    Plotly.newPlot('bar', bubbleData, bubbleLayout);
-
-
+    Plotly.newPlot('bubble', bubbleData, bubbleLayout);
 
     // For the Bar Chart, map the otu_ids to a list of strings for your yticks
     let topN = 10;
@@ -78,14 +75,12 @@ function buildCharts(sample) {
 
     // Build a Bar Chart
     // Don't forget to slice and reverse the input data appropriately
-    let barTrace = [
-      {
-        x: sample_values.slice(0, topN).reverse(),
-        y: yticks,
-        type: 'bar',
-        orientation: 'h'
-      }
-    ];
+    let barTrace = {
+      x: sample_values.slice(0, topN).reverse(),
+      y: yticks,
+      type: 'bar',
+      orientation: 'h'
+    };
 
     let barData = [barTrace];
 
@@ -94,9 +89,8 @@ function buildCharts(sample) {
       xaxis: { title: 'Number of Bacteria' },
       yaxis: { title: 'OTU IDs' }
 };
-
     // Render the Bar Chart
-    Plotly.newPlot('bubble', barData, barLayout);
+    Plotly.newPlot('bar', barData, barLayout);
 
   });
 }
@@ -135,6 +129,7 @@ function init() {
 function optionChanged(newSample) {
 
   // Build charts and metadata panel each time a new sample is selected
+  buildCharts(newSample);
   buildMetadata(newSample);
 }
 
