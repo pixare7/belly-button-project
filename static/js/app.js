@@ -16,11 +16,10 @@ function buildMetadata(sample) {
     // Use `.html("") to clear any existing metadata
     panel.html("");
 
-    // Inside a loop, you will need to use d3 to append new
+    // Inside a loop, use d3 to append new
     // tags for each key-value in the filtered metadata.
     for (key in newresult) {
       panel.append('h6').text(`${key.toUpperCase()}:${newresult[key]}`);
-
     }
   });
 }
@@ -74,7 +73,7 @@ function buildCharts(sample) {
     let yticks = otu_ids.slice(0, topN).map(id => `OTU ${id}`).reverse();
 
     // Build a Bar Chart
-    // Don't forget to slice and reverse the input data appropriately
+    // slice and reverse the input data appropriately
     let barTrace = {
       x: sample_values.slice(0, topN).reverse(),
       y: yticks,
@@ -89,9 +88,9 @@ function buildCharts(sample) {
       xaxis: { title: 'Number of Bacteria' },
       yaxis: { title: 'OTU IDs' }
 };
+
     // Render the Bar Chart
     Plotly.newPlot('bar', barData, barLayout);
-
   });
 }
 
@@ -106,14 +105,12 @@ function init() {
     let dropdown = d3.select("#selDataset");
 
     // Use the list of sample names to populate the select options
-    // Hint: Inside a loop, you will need to use d3 to append a new
-    // option for each sample name.
+    // Inside a loop, use d3 to append a new option for each sample name.
     for (let i = 0; i < names.length; i++) {
       dropdown
         .append("option")
         .text(names[i])
         .property("value", names[i]);
-
     }
 
     // Get the first sample from the list
