@@ -8,6 +8,7 @@
    - [Methodology](#methodology)
 3. [Conclusions](#conclusions)
 4. [Future Work](#future-work)
+5. [References](#references)
 
 ## Overview
 
@@ -54,3 +55,6 @@ This project successfully highlights the use of interactive visualizations to ex
 Several potential improvements and extensions could further this project:
 - Data cleaning, such as removing samples with null values, to improve accuracy.
 - Investigating the relationship between microbial diversity in the navel and demographic factors such as ethnicity or health conditions.
+
+## References
+Hulcr, J. et al. (2012). *A Jungle in There: Bacteria in Belly Buttons are Highly Diverse, but Predictable*. Retrieved from: [http://robdunnlab.com/projects/belly-button-biodiversity/results-and-data/](http://robdunnlab.com/projects/belly-button-biodiversity/results-and-data/)
