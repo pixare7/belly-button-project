@@ -1,5 +1,10 @@
 # Belly Button Project
 
+## Overview
+
+### What is this project about?
+This project explores the diversity of microbial species, also known as operational taxonomic units (OTUs), found in human navels. It features an interactive dashboard where users can select a test subject's ID number to view demographic information, the top microbial species as a bar chart, and a bubble chart displaying bacterial cultures per sample, showing both the bacteria and their count.
+
 https://pixare7.github.io/belly-button-project/
 
 ## Table of Contents
@@ -11,11 +16,6 @@ https://pixare7.github.io/belly-button-project/
 3. [Conclusions](#conclusions)
 4. [Future Work](#future-work)
 5. [References](#references)
-
-## Overview
-
-### What is this project about?
-This project explores the diversity of microbial species, also known as operational taxonomic units (OTUs), found in human navels. It features an interactive dashboard where users can select a test subject's ID number to view demographic information, the top microbial species as a bar chart, and a bubble chart displaying bacterial cultures per sample, showing both the bacteria and their count.
 
 ## Project Details
 
